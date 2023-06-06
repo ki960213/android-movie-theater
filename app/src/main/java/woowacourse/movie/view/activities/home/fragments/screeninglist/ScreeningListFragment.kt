@@ -63,7 +63,7 @@ class ScreeningListFragment : Fragment(), ScreeningListContract.View {
         theater: TheaterUIState,
         root: ViewGroup
     ): View {
-        val itemBinding = ItemTheaterBinding.inflate(layoutInflater)
+        val itemBinding = ItemTheaterBinding.inflate(layoutInflater, root, false)
         itemBinding.tvTheaterName.text = theater.theaterName
         itemBinding.tvScreeningTimeCount.text =
             getString(R.string.screening_time_count).format(theater.screeningTimeCount)
@@ -72,25 +72,4 @@ class ScreeningListFragment : Fragment(), ScreeningListContract.View {
         }
         return itemBinding.root
     }
-
-//    바인딩을 사용하면 레이아웃이 깨집니다. 이유를 모르겠습니다.
-//    private fun makeTheaterItem(
-//        screeningId: Long,
-//        theater: TheaterUIState,
-//        root: ViewGroup
-//    ): View? {
-//        val item =
-//            layoutInflater.inflate(R.layout.item_theater, root, false)
-//        val theaterNameView =
-//            item.findViewById<TextView>(R.id.tv_theater_name)
-//        theaterNameView.text = theater.theaterName
-//        val screeningTimeCount =
-//            item.findViewById<TextView>(R.id.tv_screening_time_count)
-//        screeningTimeCount.text =
-//            getString(R.string.screening_time_count).format(theater.screeningTimeCount)
-//        item.setOnClickListener {
-//            ScreeningDetailActivity.startActivity(requireContext(), screeningId, theater.theaterId)
-//        }
-//        return item
-//    }
 }
